@@ -1,15 +1,38 @@
 pipeline {
 
-    agent docker { image '0d2ff418556d'}
+    agent any
 
     stages {
 
-        stage('Test') {
+        stage('Build') {
 
             steps {
 
                 sh '''
-                sh '0d2ff418556d'
+                docker build -t cferigan/task1-jenkins
+                '''
+
+            }
+
+        }
+        
+        stage('Push') {
+
+            steps {
+
+                sh '''
+                docker push cferigan/task1-jenkins
+                '''
+
+            }
+
+        }
+          stage('Deploy') {
+
+            steps {
+
+                sh '''
+                docker run -d -p 80:5500 --name task1 cferigan/task1-jenkins
                 '''
 
             }
