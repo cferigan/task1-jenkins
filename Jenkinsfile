@@ -32,7 +32,7 @@ pipeline {
             steps {
 
                 sh '''
-                docker stop .
+                docker stop task1
                 docker rm task1
                 docker run -d -p 80:5500 --name task1 cferigan/task1-jenkins
                 '''
