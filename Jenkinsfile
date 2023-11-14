@@ -9,7 +9,7 @@ pipeline {
             steps {
 
                 sh '''
-                docker build -t cferigan/task1-jenkins
+                docker build -t cferigan/task1-jenkins .
                 '''
 
             }
