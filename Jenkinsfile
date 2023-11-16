@@ -42,7 +42,7 @@ pipeline {
                 docker stop flask-app && echo "Stopped flask-app" || echo "flask-app is not running"
                 docker rm flask-app && echo "removed flask-app" || echo "flask-app does not exist"
                 docker run -d -p 80:5500 --name flask-app --network task1-net cferigan/task1-jenkins
-                docker run -d --name nginx --network task1-net -p 80:80 cferigan/task1-nginx
+                docker run -d --name nginx --network task1-net -p 81:80 cferigan/task1-nginx
                 '''
 
             }
