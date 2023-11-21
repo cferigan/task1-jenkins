@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: task1
+  labels:
+    app: task1-app
+spec:
+  containers:
+  - image: agray998/task1jenk
+    name: task1
+    env:
+      - name: YOUR_NAME
+        value: QA-Kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app
+  labels:
+    app: task1-app
+spec:
+  type: ClusterIP
+  selector:
+    app: task1-app
+  ports:
+    - port: 5500
+      protocol: TCP
